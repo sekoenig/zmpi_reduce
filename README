@@ -1,0 +1,21 @@
+ZMPI-Reduce -- ZMPI Reduce Library
+
+
+Overview
+--------
+The ZMPI-Reduce library provides several variants of the MPI_Reduce communication operation, which are optimized for sum operations (MPI_SUM) on sparse floating-point vectors (MPI_DOUBLE).
+The operations use run length encoding (RLE) to compress sequences of zeros in order to reduce the size of data to be transferred and the number of addition operations to be performed for the summation.
+Several implementation variants of the communication operations as well as performance comparisons can be found in:
+
+  Hofmann, M.; Rünger, G.: MPI Reduction Operations for Sparse Floating-Point Data.
+  In: Lastovetsky, A.; Kechadi, T.; Dongarra, J. (Eds.): Recent Advances in Parallel Virtual Machine and Message Passing Interface, 15th European PVM/MPI Users Group Meeting (LNCS, vol. 5205): pp. 94-101. Springer - ISBN 978-3-540-87474-4. Dublin, Ireland, September 2008. DOI: 10.1007/978-3-540-87475-1_17
+
+
+Usage
+-----
+1. Use CMake to build the library.
+
+2. File 'zmpi_reduce.h' provides interface definitions of the library functions.
+
+3. Use CMake to to create a short demo program 'zmpi_tests'.
+   The source code of the demo is located in directory 'tests' and demonstrates the usage of the new MPI_Reduce communication operations.
