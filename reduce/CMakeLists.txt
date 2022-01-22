@@ -16,4 +16,9 @@ if(USE_MPI)
   target_link_libraries(${_target} PRIVATE MPI::MPI_C)
 endif()
 
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+
+find_package(Threads REQUIRED)
+
+target_link_libraries(${_target} PRIVATE Threads::Threads)
 target_link_libraries(${_target} PRIVATE dblv)
