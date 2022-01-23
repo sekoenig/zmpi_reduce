@@ -13,3 +13,13 @@ if(USE_MPI)
   target_compile_definitions(${_target} PUBLIC USE_MPI)
   target_link_libraries(${_target} PRIVATE MPI::MPI_C)
 endif()
+
+set_target_properties(${_target} PROPERTIES PUBLIC_HEADER "dblv.h")
+
+include(GNUInstallDirs)
+
+install(
+  TARGETS ${_target}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)

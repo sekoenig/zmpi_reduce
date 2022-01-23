@@ -1,4 +1,3 @@
-
 set(_target "zmpi_reduce")
 
 file(GLOB _srcs *.c)
@@ -22,3 +21,25 @@ find_package(Threads REQUIRED)
 
 target_link_libraries(${_target} PRIVATE Threads::Threads)
 target_link_libraries(${_target} PRIVATE dblv)
+
+set(
+  ZMPIR_PUBLIC_HEADERS
+  "zmpi_reduce.h"
+  "mpi_reduce_rabenseifner.h"
+  "mpi_reduce_gather.h"
+  "mpi_reduce_pipe.h"
+)
+
+set_target_properties(
+  ${_target}
+  PROPERTIES PUBLIC_HEADER
+  "${ZMPIR_PUBLIC_HEADERS}"
+)
+
+include(GNUInstallDirs)
+
+install(
+  TARGETS ${_target}
+  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
